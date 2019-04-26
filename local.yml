@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: on
+  fact_path: /tmp/ansible/facts
+  tasks:
+    - name: Collect only facts returned by facter
+      setup:
+        fact_path: /tmp/ansible/facts
+        gather_subset:
+          - '!all'
+          - '!any'
+          - facter
+    - name: Include server specific role
+      include_role:
+        name: "{{ ansible_facts['ansible_local']['roles']['role'] }}"
+

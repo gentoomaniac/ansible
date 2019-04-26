@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+
+import json
+import re
+import socket
+
+REGEX = r'^(?P<role>[\w-]+?)(?P<role_seq>\d?)$'
+
+match = re.match(REGEX, socket.gethostname())
+if match:
+    print(json.dumps(match.groupdict()))

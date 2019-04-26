@@ -1,0 +1,4 @@
+---
+- name: Print test message for role {{ ansible_facts['ansible_local']['roles']['role'] }}
+  debug:
+    var: ansible_facts['ansible_local']
